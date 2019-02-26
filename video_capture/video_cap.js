@@ -33,6 +33,7 @@
         const ctx = canvas.getContext('2d'); // get its context
         canvas.width = video.videoWidth; // set its size to the one of the video
         canvas.height = video.videoHeight;
+        console.log(video.videoWidth,video.videoHeight);
         ctx.drawImage(video, 0,0); // the video
         video.hidden = true;
         canvas.hidden=false;
@@ -41,17 +42,23 @@
     acceptBtn.onclick = function () {
         
         canvas.toBlob(function (blob){
+            blob.name="your_face.jpg";
 
-            //save the image to disk from here
-            var newImg = document.createElement('img'),
-            blobUrl = URL.createObjectURL(blob);
-            newImg.onload = function() {
-            // no longer need to read the blob so it's revoked
-                URL.revokeObjectURL(blobUrl);
-            }
-            newImg.src = blobUrl;
-            document.body.appendChild(newImg);
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                var base64 = reader.result;
+                var link = document.createElement("a");
+                
+                link.setAttribute("href", base64);
+                link.setAttribute("download", blob.name);
+                link.click();
+            };
+            
+            reader.readAsDataURL(blob);
         },'image/jpeg');
+
+        self.close();
     }
 
     rejectBtn.onclick = function () {

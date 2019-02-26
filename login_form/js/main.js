@@ -67,6 +67,7 @@
         }
     }
 
+
     function showValidate(input) {
         var thisAlert = $(input).parent();
 
@@ -78,7 +79,20 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
+
+    /* Custom Code */
+    $('#takePic').on('click',function(){
+        console.log("inside");
+        chrome.runtime.sendMessage({
+            action: 'createWindow',
+            url: '../video_capture/video_cap.html'
+          },
+          function(createdWindow) {
+            console.log(createdWindow);
+          });
+    });
+
+   
 
 
 })(jQuery);
