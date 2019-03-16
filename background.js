@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener(function (){
    chrome.tabs.create({
-       'url': chrome.extension.getURL('/login_form/index.html'),
+       'url': chrome.extension.getURL('/signup_form/index.html'),
        'active':true
     },
     function(){
@@ -15,3 +15,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
      });
    }
  });
+
+ chrome.runtime.onStartup.addListener(function(){
+  chrome.tabs.create({
+    'url': chrome.extension.getURL('/login_form/login.html'),
+    'active':true
+ },
+ function(){
+    console.log("verify tab opened");
+});
+ })

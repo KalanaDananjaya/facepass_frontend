@@ -5,7 +5,7 @@
     "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
 
     "background": {
-        "scripts": ["background.js","./login_form/js/main.js"],
+        "scripts": ["background.js","./signup_form/js/main.js","./login_form/js/login.js"],
         "persistent": false
     },
     "page_action": {
