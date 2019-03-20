@@ -471,7 +471,7 @@ textarea.input3 {
 [ Input3 select ]*/
 
 .input3-select {
-  display: none;
+  display: inline-block;
 }
 
 

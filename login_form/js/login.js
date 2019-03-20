@@ -44,9 +44,9 @@
         canvas.toBlob(function (blob){
            
             var formData = new FormData();
-            var uid = document.getElementById('uid').value;
+            var email = document.getElementById('email').value;
             formData.append('file',blob);
-            formData.append('uid',uid) // "1ab0123d-700d-4ade-b5e0-d9c6e4bef257" example uid
+            formData.append('email',email) // "1ab0123d-700d-4ade-b5e0-d9c6e4bef257" example uid
             
             $.ajax({
                 type: 'POST',
