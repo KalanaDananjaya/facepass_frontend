@@ -8,11 +8,13 @@
         "scripts": ["background.js","./signup_form/js/main.js","./login_form/js/login.js"],
         "persistent": false
     },
-    "page_action": {
-        "default_popup": "register.html"
-
-    },
     
+    "browser_action" : {
+        "default_icon": {                    
+            "16": "images/icon16.png"                   
+          },
+          "default_title": "FacePass"        
+    },
     "content_security_policy":"script-src 'self' https://code.jquery.com; object-src 'self'",
     "manifest_version": 2
 }
