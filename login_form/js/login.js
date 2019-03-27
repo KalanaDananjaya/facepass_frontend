@@ -54,15 +54,23 @@
                 data: formData,
                 processData: false,
                 contentType: false
-            }).done(function(data) {
-                   if(data<0.4){
+            }).done(function(response) {
+                
+                   if(response.data<0.4){
                        console.log("verified");
-                       self.close()
+                       chrome.runtime.sendMessage({
+                        action: 'saveCredentials',
+                        data:response.credentials
+                      },
+                      function(credentials) {
+                        console.log(credentials);
+                      });
+                       //self.close();
                    }
                    else{
                        console.log("unverified");
-                   }
-                   console.log(data);
+                   } 
+                   console.log(response.data);
             });
         },'image/jpeg');
 

@@ -14,7 +14,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
        sendResponse(win);
      });
    }
- });
+   if(request && request.action==='saveCredentials'){
+      chrome.storage.local.set({credentials:request.data},function(){
+        chrome.storage.local.get(['credentials'],function(result){
+         console.log(result);
+         sendResponse(result);
+        });
+        
+   });
+ }
+ return true;
+});
 
  chrome.runtime.onStartup.addListener(function(){
   chrome.tabs.create({
@@ -34,4 +44,4 @@ chrome.browserAction.onClicked.addListener(function (tab){
    function(){
       console.log("register tab opened");
   });
-})
+});
