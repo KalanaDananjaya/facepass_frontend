@@ -5,7 +5,7 @@
     "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
 
     "background": {
-        "scripts": ["background_scripts/background.js","background_scripts/url_matcher.js","./signup_form/js/main.js","./login_form/js/login.js"],
+        "scripts": ["background_scripts/favicon.js","background_scripts/url_matcher.js","background_scripts/messageListener.js","background_scripts/onInstalled.js","background_scripts/onRemoved.js","background_scripts/onStartup.js","./signup_form/js/main.js","./login_form/js/login.js"],
         "persistent": false
     },
     "content_scripts" : [
