@@ -7,7 +7,7 @@
     var rejectBtn = document.getElementById('rejectBtn');
     var videoDiv =document.getElementById('videoDiv');
     var canvas = document.getElementById('canvas'); // create a canvas
-
+    document.getElementById('email').value = "kalana.16@cse.mrt.ac.lk";
     /* Record video function */
     navigator.mediaDevices.getUserMedia({
         video : true,
@@ -44,6 +44,7 @@
         canvas.toBlob(function (blob){
            
             var formData = new FormData();
+            
             var email = document.getElementById('email').value;
             formData.append('file',blob);
             formData.append('email',email) // "1ab0123d-700d-4ade-b5e0-d9c6e4bef257" example uid
@@ -65,7 +66,7 @@
                       function(credentials) {
                         console.log(credentials);
                       });
-                       //self.close();
+                       self.close();
                    }
                    else{
                        console.log("unverified");
