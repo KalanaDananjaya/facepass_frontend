@@ -54,17 +54,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
  return true;
 });
 
-/*
 
-chrome.runtime.onMessage.addListener(function(request, sender, callback) {
-    switch (request.name) {
-         case 'form_submit':
-             var data = request.data;
-             // do something with your form credentials.
-             break;
-     }
-});
-
-*/
 
 
