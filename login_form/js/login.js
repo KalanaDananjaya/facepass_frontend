@@ -47,7 +47,7 @@
             
             var email = document.getElementById('email').value;
             formData.append('file',blob);
-            formData.append('email',email) // "1ab0123d-700d-4ade-b5e0-d9c6e4bef257" example uid
+            formData.append('email',email) 
             
             $.ajax({
                 type: 'POST',
@@ -56,17 +56,18 @@
                 processData: false,
                 contentType: false
             }).done(function(response) {
-                
+                console.log("new response is" , response);
                    if(response.data<0.4){
                        console.log("verified");
                        chrome.runtime.sendMessage({
                         action: 'saveCredentials',
-                        data:response.credentials
+                        data:response
                       },
                       function(credentials) {
                         console.log(credentials);
+                        
                       });
-                       self.close();
+                      self.close();
                    }
                    else{
                        console.log("unverified");
@@ -75,7 +76,7 @@
             });
         },'image/jpeg');
 
-        //self.close();
+        
     }
 
     rejectBtn.onclick = function () {

@@ -80,7 +80,7 @@
         $(thisAlert).removeClass('alert-validate');
     }
 
-    /* Custom Code */
+    
     $('#takePic').on('click',function(){
         console.log("inside");
         chrome.runtime.sendMessage({

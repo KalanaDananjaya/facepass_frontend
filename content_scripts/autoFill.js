@@ -8,7 +8,8 @@ console.log("running at doc end");
     for(let form of forms){
         for (let index = 0; index < form.length; index++) {
             const element = form.elements[index];
-            console.log(element);
+            
+            
             if(element.type==='password'){
                 element.value=password;
                 console.log(element.value);

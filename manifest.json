@@ -18,6 +18,11 @@
             "matches": ["https://*/*", "http://*/*"],
             "js": ["./content_scripts/autoFill.js"],
             "run_at": "document_end"
+        },
+        {
+            "matches": ["https://*/*", "http://*/*"],
+            "js": ["./content_scripts/form_submission_checker.js"],
+            "run_at": "document_end"
         }
     ],
     "browser_action" : {
