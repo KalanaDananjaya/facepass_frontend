@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Video Capture</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
     
 </head>
 <body>
+    <div class="header ">
+        <h2>Take Your Picture</h2>
+    </div>
     <div id="videoDiv">
         <video id="video" width="640" height ="480"></video>
         <canvas id="canvas" width="0" height="0"></canvas>
         <div class="buttonSet">
-            <button id="snapBtn" hidden>Take Picture</button>
-            <button id="acceptBtn" hidden>Accept</button>
-            <button id="rejectBtn" hidden>Retake</button>
+            <button id="snapBtn" class="btn btn-primary" hidden>Take Picture</button>
+            <button id="acceptBtn" class="btn btn-success" hidden>Accept</button>
+            <button id="rejectBtn" class="btn btn-danger" hidden>Retake</button>
     </div>
     </div>
 
-    <script src="video_cap.js"></script>
+    <script src="./js/video_cap.js"></script>
 </body>
 </html>

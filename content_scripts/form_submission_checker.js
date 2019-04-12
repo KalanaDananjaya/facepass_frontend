@@ -2,10 +2,16 @@
 console.log("form submission script running");
 console.log("forms",document.forms,document.forms.length);
 for (var i = 0; i < document.forms.length; i++) {
-    console.log('inside loop');
     document.forms[i].addEventListener("submit", function(){
-        var confirmSaving = confirm('Do you want to save the password?');
-        
+       
+
+        for (let index = 0; index < this.length; index++) {
+            const element = this.elements[index];
+            if(element.type==="password"){
+                var confirmSaving = confirm('Do you want to save the password?');
+            }
+        }
+
         if( confirmSaving===true ){
             
             var password;
@@ -34,12 +40,13 @@ for (var i = 0; i < document.forms.length; i++) {
                 website : url
             };
             
-            // contact with your background page and send the form data.
+            // contact with the background page and send the form data.
            
-            chrome.runtime.sendMessage({action:'form_submit', 'data':data}, function(){
-                /* my callback if needed */ 
-                alert("form submitted");
-                });
+            chrome.runtime.sendMessage({action:'form_submit', 'data':data}, function(response){
+                if(response.success===false){
+                    alert(response.msg);
+                }    
+            });
                 
         }
         

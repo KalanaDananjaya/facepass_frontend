@@ -1,7 +1,7 @@
 {
     "name": "FacePass FrontEnd",
     "version": "1.0",
-    "description": "test",
+    "description": "Face Recognition Based Password Manager for Google Chrome",
     "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
 
     "background": {

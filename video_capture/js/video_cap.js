@@ -8,6 +8,10 @@
     var videoDiv =document.getElementById('videoDiv');
     var canvas = document.getElementById('canvas'); // create a canvas
 
+    snapBtn.style.display = "flex";
+    acceptBtn.style.display = "none";
+    rejectBtn.style.display = "none";
+
     /* Record video function */
     navigator.mediaDevices.getUserMedia({
         video : true,
@@ -26,22 +30,25 @@
 
 
     snapBtn.onclick = function (){
-        snapBtn.hidden=true;
-        acceptBtn.hidden=false;
-        rejectBtn.hidden=false;
+        snapBtn.style.display="none";
+        acceptBtn.style.display="flex";
+        rejectBtn.style.display="flex";
  
         const ctx = canvas.getContext('2d'); // get its context
         canvas.width = video.videoWidth; // set its size to the one of the video
         canvas.height = video.videoHeight;
         console.log(video.videoWidth,video.videoHeight);
         ctx.drawImage(video, 0,0); // the video
-        video.hidden = true;
-        canvas.hidden=false;
+        
+        canvas.style.display ="flex";
+        canvas.style.margin = "auto";
+        video.style.display = "none"
     }
 
     acceptBtn.onclick = function () {
         
         canvas.toBlob(function (blob){
+            
             blob.name="your_face.jpg";
 
             var reader = new FileReader();
@@ -58,16 +65,19 @@
             reader.readAsDataURL(blob);
         },'image/jpeg');
 
-        self.close();
+        setTimeout(function() {
+            self.close();
+        }, (3000));
+        
     }
 
     rejectBtn.onclick = function () {
-        video.hidden = false;
-        canvas.hidden=true;
+        video.style.display = "flex";
+        canvas.style.display="none";
         
-        snapBtn.hidden = false;
-        acceptBtn.hidden = true;
-        rejectBtn.hidden = true;
+        snapBtn.style.display = "flex";
+        acceptBtn.style.display = "none";
+        rejectBtn.style.display = "none";
     }
 
 

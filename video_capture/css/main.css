@@ -1,0 +1,50 @@
+.header h2{
+    position: relative;
+    text-align: center;
+    
+}
+
+body{
+    background-image: url("../images/ng.jpg");
+}
+#videoDiv #video {
+    position: relative;
+    display: flex;
+    margin: auto;
+    border: 1px;
+}
+
+#video{
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#canvas{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button{
+    margin: auto;
+    display: flex;
+}
+
+.buttonSet{
+    margin : 5px;
+}
+
+#emailDiv{
+    display: none;
+}
+
+.wrapper{
+    text-align: center;
+    
+}
+
+label{
+    margin-right: 10px;
+}
+
+#acceptBtn{
+    margin-bottom: 10px;
+}

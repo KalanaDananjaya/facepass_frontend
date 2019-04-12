@@ -8,11 +8,12 @@
     var videoDiv =document.getElementById('videoDiv');
     var canvas = document.getElementById('canvas'); // create a canvas
     var emailDiv = document.getElementById('emailDiv');
-    //email.value = "kalana.16@cse.mrt.ac.lk";
+    
 
     snapBtn.style.display = "flex";
     acceptBtn.style.display = "none";
     rejectBtn.style.display = "none";
+    
     /* Record video function */
     navigator.mediaDevices.getUserMedia({
         video : true,
@@ -83,12 +84,11 @@
                           },
                           function(credentials) {
                             console.log(credentials);
-                            
                           });
                           self.close();
                        }
                        else{
-                           console.log("unverified");
+                           alert("Face not recognized.Please Try again");
                        } 
                        console.log(response.data);
                 });
