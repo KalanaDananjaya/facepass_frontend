@@ -5,19 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Form</title>
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-    <div id="videoDiv">
-        <input id="email">Please Enter your Email
-        <video id="video" width="640" height ="480"></video>
-        <canvas id="canvas" width="0" height="0"></canvas>
-        <div class="buttonSet">
-            <button id="snapBtn" hidden>Take Picture</button>
-            <button id="acceptBtn" hidden>Accept</button>
-            <button id="rejectBtn" hidden>Retake</button>
+    <div class="header ">
+        <h2>Log In</h2>
     </div>
+    <div id="videoDiv" >
+        <video id="video" style="display:flex" width="640" height ="480"></video>
+        <canvas id="canvas" hidden width="640" height="480" ></canvas>
     </div>
+    <div class="buttonSet">
+            <button id="snapBtn"class="btn btn-primary" hidden>Take Picture</button>
+            
+            <button id="rejectBtn" class="btn btn-danger" hidden>Retake</button>
+    </div>
+    
+    <div class="wrapper">
+        <div id="emailDiv" class="form-group">
+            
+            <input id="email" type="email" class="form-control" placeholder="Please Enter Your Email">
+        </div>
+    </div>
+    
+    
+    <button id="acceptBtn" class="btn btn-success" hidden>Log In</button>
+
+    
     <script src="jquery-3.3.1.min.js"></script>
     <script src="js/login.js"></script>
 </body>

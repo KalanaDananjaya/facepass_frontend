@@ -7,7 +7,12 @@
     var rejectBtn = document.getElementById('rejectBtn');
     var videoDiv =document.getElementById('videoDiv');
     var canvas = document.getElementById('canvas'); // create a canvas
-    document.getElementById('email').value = "kalana.16@cse.mrt.ac.lk";
+    var emailDiv = document.getElementById('emailDiv');
+    //email.value = "kalana.16@cse.mrt.ac.lk";
+
+    snapBtn.style.display = "flex";
+    acceptBtn.style.display = "none";
+    rejectBtn.style.display = "none";
     /* Record video function */
     navigator.mediaDevices.getUserMedia({
         video : true,
@@ -18,74 +23,88 @@
         video.play();
     })
     .then(function(){
-        snapBtn.hidden = false;
+        snapBtn.style.display="flex";
     })
     .catch(function (error){
         console.log(error);
     });
 
+    function ValidateEmail(mail) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
+            return (true);
+        }
+        alert("You have entered an invalid email address!");
+        return (false);
+    }
+
+
 
     snapBtn.onclick = function (){
-        snapBtn.hidden=true;
-        acceptBtn.hidden=false;
-        rejectBtn.hidden=false;
- 
+        snapBtn.style.display="none";
+        acceptBtn.style.display="flex";
+        rejectBtn.style.display="flex";
+        emailDiv.style.display="inline-block";
+        
         const ctx = canvas.getContext('2d'); // get its context
         canvas.width = video.videoWidth; // set its size to the one of the video
         canvas.height = video.videoHeight;
         console.log(video.videoWidth,video.videoHeight);
         ctx.drawImage(video, 0,0); // the video
-        video.hidden = true;
-        canvas.hidden=false;
+        canvas.style.display ="flex";
+        canvas.style.margin = "auto";
+        video.style.display = "none";
+        
     }
 
     acceptBtn.onclick = function () {
-        
-        canvas.toBlob(function (blob){
+        var email = document.getElementById('email').value;
+        if(ValidateEmail(email)===true){
+            canvas.toBlob(function (blob){
            
-            var formData = new FormData();
-            
-            var email = document.getElementById('email').value;
-            formData.append('file',blob);
-            formData.append('email',email) 
-            
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:3000/verify',
-                data: formData,
-                processData: false,
-                contentType: false
-            }).done(function(response) {
-                console.log("new response is" , response);
-                   if(response.data<0.4){
-                       console.log("verified");
-                       chrome.runtime.sendMessage({
-                        action: 'saveCredentials',
-                        data:response
-                      },
-                      function(credentials) {
-                        console.log(credentials);
-                        
-                      });
-                      self.close();
-                   }
-                   else{
-                       console.log("unverified");
-                   } 
-                   console.log(response.data);
-            });
-        },'image/jpeg');
-
-        
+                var formData = new FormData();
+                
+                var email = document.getElementById('email').value;
+                formData.append('file',blob);
+                formData.append('email',email) 
+                
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/verify',
+                    data: formData,
+                    processData: false,
+                    contentType: false
+                }).done(function(response) {
+                    console.log("new response is" , response);
+                       if(response.data<0.4){
+                           console.log("verified");
+                           chrome.runtime.sendMessage({
+                            action: 'saveCredentials',
+                            data:response
+                          },
+                          function(credentials) {
+                            console.log(credentials);
+                            
+                          });
+                          self.close();
+                       }
+                       else{
+                           console.log("unverified");
+                       } 
+                       console.log(response.data);
+                });
+            },'image/jpeg');
+    
+        }
     }
 
     rejectBtn.onclick = function () {
-        video.hidden = false;
-        canvas.hidden=true;
+        video.style.display = "flex";
+        canvas.style.display="none";
+        emailDiv.style.display="none";
         
-        snapBtn.hidden = false;
-        acceptBtn.hidden = true;
-        rejectBtn.hidden = true;
+        snapBtn.style.display = "flex";
+        acceptBtn.style.display = "none";
+        rejectBtn.style.display = "none";
     }
 
 

@@ -42,6 +42,12 @@
                 check=false;
             }
         }
+        
+        
+        if((document.getElementById("pass").value) !== (document.getElementById("repeat-pass").value)){
+            check=false;
+            alert("passwords do not match.Please try again");
+        }
 
         return check;
     });
