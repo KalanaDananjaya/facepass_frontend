@@ -12,7 +12,7 @@ console.log("running at doc end");
                 element.value=password;
                 for (let reverseIndex = index-1; reverseIndex >= 0; reverseIndex--) {
                     const element = form.elements[reverseIndex];
-                    if(element.type==='text'){
+                    if(element.type==='text' || element.type==='email'){
                         element.value=username;
                         break;
                     }

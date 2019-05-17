@@ -2,8 +2,11 @@
     "name": "FacePass FrontEnd",
     "version": "1.0",
     "description": "Face Recognition Based Password Manager for Google Chrome",
-    "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
-
+    "permissions": ["activeTab", "declarativeContent", "storage", "tabs","contextMenus"],
+    "icons" : {
+        "16": "./images/logo16.png",
+        "48" : "images/logo48.png"     
+    },
     "background": {
         "scripts": ["background_scripts/favicon.js","background_scripts/url_matcher.js","background_scripts/messageListener.js","background_scripts/onInstalled.js","background_scripts/onRemoved.js","background_scripts/onStartup.js","./signup_form/js/main.js","./login_form/js/login.js"],
         "persistent": false
@@ -27,9 +30,11 @@
     ],
     "browser_action" : {
         "default_icon": {                    
-            "16": "images/icon16.png"                   
+            "16": "images/logo16.png",
+            "48" : "images/logo48.png"               
           },
-          "default_title": "FacePass"        
+          "default_title": "FacePass",
+          "default_popup" : "./browser_action/popup.html"        
     },
     "content_security_policy":"script-src 'self' https://code.jquery.com; object-src 'self'",
     "manifest_version": 2

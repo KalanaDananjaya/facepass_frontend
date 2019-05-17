@@ -76,7 +76,7 @@
                     contentType: false
                 }).done(function(response) {
                     console.log("new response is" , response);
-                       if(response.data<0.4){
+                       if(response.data<0.4 && response.data>0){
                            console.log("verified");
                            chrome.runtime.sendMessage({
                             action: 'saveCredentials',
@@ -86,6 +86,9 @@
                             console.log(credentials);
                           });
                           self.close();
+                       }
+                       else if(response.data==-1){
+                          alert("Email not recognized.Please Try again");
                        }
                        else{
                            alert("Face not recognized.Please Try again");

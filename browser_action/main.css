@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background:white;
+  color: black;
+  line-height: normal;
+  font-size: 14px;
+  font-family: sans-serif;
+  margin-bottom: 0%;
+  
+}
+
+ul{
+  list-style: none;
+  padding: 0%;
+  margin: 0%;
+}
+
+li{
+  color: #777777;
+}
+
+a:hover{
+  color: #333333;
+}
+
+a{
+  text-decoration: none;
+  border: 3px;
+  color: #777777;
+}
+

