@@ -51,7 +51,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             }
         };
 
-         xhr.open('POST', 'http://localhost:3000/addaccount');
+         xhr.open('POST', 'http://35.209.163.57:3000/addaccount');
          xhr.withCredentials = true;
          xhr.setRequestHeader('Content-Type', 'application/json');
          xhr.send(JSON.stringify(msg));

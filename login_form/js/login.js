@@ -70,7 +70,7 @@
                 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://localhost:3000/verify',
+                    url: 'http://35.209.163.57:3000/verify',
                     data: formData,
                     processData: false,
                     contentType: false
