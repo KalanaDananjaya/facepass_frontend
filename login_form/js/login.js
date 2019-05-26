@@ -76,7 +76,7 @@
                     contentType: false
                 }).done(function(response) {
                     console.log("new response is" , response);
-                       if(response.data<0.4 && response.data>0){
+                       if(response.data<0.3 && response.data>0){
                            console.log("verified");
                            chrome.runtime.sendMessage({
                             action: 'saveCredentials',
